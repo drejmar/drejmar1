@@ -29,7 +29,7 @@ public abstract class AbstractBoosterApplicationTest {
         when().get()
                 .then()
                 .statusCode(200)
-                .body("content", is(String.format(getProperties().getMessage(), "World")));
+                .body("content", is(String.format(getProperties().getMessage(), "World", "Neverland")));
     }
 
     @Test
@@ -39,7 +39,17 @@ public abstract class AbstractBoosterApplicationTest {
                 .get()
                 .then()
                 .statusCode(200)
-                .body("content", is(String.format(getProperties().getMessage(), "John")));
+                .body("content", is(String.format(getProperties().getMessage(), "John", "Neverland")));
+    }
+
+    @Test
+    public void testGreetingEndpointWithNameAndPlaceParameter() {
+        given().param("name", "Andrej").param("place", "Slovenia")
+                .when()
+                .get()
+                .then()
+                .statusCode(200)
+                .body("content", is(String.format(getProperties().getMessage(), "Andrej", "Slovenia")));
     }
 
     protected abstract GreetingProperties getProperties();

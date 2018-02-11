@@ -24,10 +24,13 @@ To interact with your booster while it's running locally, use the form at `http:
 [source,bash,options="nowrap",subs="attributes+"]
 ----
 $ curl http://localhost:8080/api/greeting
-{"content":"Hello, World!"}
+{"content":"Hello, World from Neverland !"}
 
 $ curl http://localhost:8080/api/greeting?name=Sarah
-{"content":"Hello, Sarah!"}
+{"content":"Hello, Sarah from Neverland !"}
+
+$ curl http://localhost:8080/api/greeting?name=Sarah&place=England
+{"content":"Hello, Sarah from England !"}
 ----
 
 

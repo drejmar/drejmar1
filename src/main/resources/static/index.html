@@ -27,6 +27,10 @@
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" placeholder="World">
             </div>
+            <div class="form-group">
+                <label for="place">Place</label>
+                <input type="text" class="form-control" id="place" placeholder="Neverland">
+            </div>
             <button id="invoke" type="submit" class="btn btn-success">Invoke</button>
         </form>
 
@@ -44,7 +48,8 @@
   $(document).ready(function () {
     $("#invoke").click(function (e) {
       var n = $("#name").val() || "World";
-      $.getJSON("/api/greeting?name=" + n, function (res) {
+      var p = $("#place").val() || "Neverland";
+      $.getJSON("/api/greeting?name=" + n + "&place=" + p, function (res) {
         $("#greeting-result").text(JSON.stringify(res));
       });
       e.preventDefault();
